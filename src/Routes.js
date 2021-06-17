@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Url from 'Paths';
 import Catalog from 'Modules/Catalog';
 import Product from 'Modules/Product';
+import Cart from 'Modules/Cart';
 
 
 const routes = [
@@ -15,6 +16,11 @@ const routes = [
     path: Url.PRODUCT,
     exact: true,
     component: Product,
+  },
+  {
+    path: Url.CART,
+    exact: true,
+    component: Cart,
   },
 ];
 

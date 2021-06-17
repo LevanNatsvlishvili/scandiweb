@@ -9,6 +9,7 @@ const SelectField = styled.div`
   margin-left:-25px;
   min-height:100px;
   filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
+  z-index:999;
 `;
 
 class CurrencySelect extends React.Component {

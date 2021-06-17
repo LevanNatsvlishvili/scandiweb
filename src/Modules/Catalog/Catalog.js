@@ -1,5 +1,5 @@
 import React from 'react';
-import Product from './Components/Product/';
+import Product from './Product';
 import styled from 'styled-components'
 import { Grid, GridItem } from 'Components/Grid'
 

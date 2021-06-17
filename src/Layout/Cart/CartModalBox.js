@@ -11,6 +11,7 @@ const Cart = styled.div`
   width:325px;
   min-height:540px;
   padding:16px;
+  z-index:1000;
 `;
 
 

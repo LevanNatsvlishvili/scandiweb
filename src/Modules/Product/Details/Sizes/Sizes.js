@@ -1,11 +1,10 @@
-import ButtonBlock from 'Components/Buttons/ButtonBlock';
 import Text from 'Components/Text';
 import React from 'react';
 import styled from 'styled-components'
-import DetailsSizesButtons from './DetailsSizesButtons'
+import DetailsSizesButtons from './SizesList'
 
 
-const Sizes = styled.div`
+const SizesWrapper = styled.div`
   margin:-4px;
   flex-wrap: wrap!important;
   display:flex;
@@ -17,14 +16,12 @@ const Wrapper = styled.div`
 `
 
 
-class DetailsSizes extends React.Component {
-
+class Sizes extends React.Component {
 
   render() {
-    const { sizes } = this.props;
+    const { sizes, handleSize, currentSize } = this.props;
     return (
       <Wrapper>
-
         <Text
           fontWeight='700'
           fontSize='18px'
@@ -33,14 +30,17 @@ class DetailsSizes extends React.Component {
           fontFamily='roboto'
         >
           SIZE:
-      </Text>
+        </Text>
 
-        <Sizes>
-          <DetailsSizesButtons sizes={sizes} />
-        </Sizes>
+        <SizesWrapper>
+          <DetailsSizesButtons
+            currentSize={currentSize}
+            handleSize={handleSize}
+            sizes={sizes} />
+        </SizesWrapper>
       </Wrapper>
     )
   }
 }
 
-export default DetailsSizes;
+export default Sizes;

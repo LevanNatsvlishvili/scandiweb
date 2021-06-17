@@ -1,8 +1,8 @@
-import Text from 'Components/Text';
 import React from 'react';
+import Text from 'Components/Text'
 
+class ProductTitle extends React.Component {
 
-class DetailsTitle extends React.Component {
 
   render() {
     const { title, type } = this.props;
@@ -25,9 +25,8 @@ class DetailsTitle extends React.Component {
         >
           {type}
         </Text>
-      </div>
+      </div >
     )
   }
 }
-
-export default DetailsTitle;
+export default ProductTitle;
