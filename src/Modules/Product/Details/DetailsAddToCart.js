@@ -9,6 +9,7 @@ const ButtonWrapper = styled.div`
 class DetailsAddToCart extends React.Component {
 
   render() {
+    const { addToCart } = this.props;
     return (
       <ButtonWrapper>
         <ButtonBlock
@@ -18,6 +19,7 @@ class DetailsAddToCart extends React.Component {
           fontSize='16px'
           lineHeight='19.2px'
           fontWeight='600'
+          onClick={addToCart}
         >
           Add To Cart
         </ButtonBlock>

@@ -10,6 +10,7 @@ const Title = styled.div`
 class CartMyBag extends React.Component {
 
   render() {
+    const { items } = this.props;
     return (
       <Title>
         <Text
@@ -27,7 +28,7 @@ class CartMyBag extends React.Component {
           lineHeight='25.6px'
           fontWeight='500'
         >
-          2 items
+          {items} items
         </Text>
       </Title>
     )

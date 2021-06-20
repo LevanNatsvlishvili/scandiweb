@@ -45,7 +45,7 @@ class CurrencyOptions extends React.Component {
           {options.map((option, index) => (
             <ListItem>
               <ListItemButton key={index} onClick={() => this.onClick(option)}>
-                {option.name}
+                {option}
               </ListItemButton>
             </ListItem>
           ))}

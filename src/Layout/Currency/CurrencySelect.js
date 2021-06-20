@@ -22,7 +22,7 @@ class CurrencySelect extends React.Component {
       </SelectField>
     )
 
-    return false;
+    return null;
   }
 }
 

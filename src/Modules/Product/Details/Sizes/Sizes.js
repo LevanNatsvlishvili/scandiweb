@@ -1,7 +1,7 @@
 import Text from 'Components/Text';
 import React from 'react';
 import styled from 'styled-components'
-import DetailsSizesButtons from './SizesList'
+import SizesList from './SizesList'
 
 
 const SizesWrapper = styled.div`
@@ -20,7 +20,7 @@ class Sizes extends React.Component {
 
   render() {
     const { sizes, handleSize, currentSize } = this.props;
-    return (
+    if (Array.isArray(sizes) && sizes[0]) return (
       <Wrapper>
         <Text
           fontWeight='700'
@@ -33,13 +33,15 @@ class Sizes extends React.Component {
         </Text>
 
         <SizesWrapper>
-          <DetailsSizesButtons
+          <SizesList
             currentSize={currentSize}
             handleSize={handleSize}
             sizes={sizes} />
         </SizesWrapper>
       </Wrapper>
     )
+
+    return null;
   }
 }
 

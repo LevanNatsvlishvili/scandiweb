@@ -10,14 +10,16 @@ class DetailsDescription extends React.Component {
 
 
   render() {
+    const { desc } = this.props;
     return (
       <DescriptionWrapper>
         <Text
           fontSize='14px'
           lineHeight='25.6px'
           color='text'
+          dangerouslySetInnerHTML={{ __html: desc }}
         >
-          Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.
+          {/* {desc} */}
         </Text>
       </DescriptionWrapper>
     )

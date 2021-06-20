@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import ButtonBlock from 'Components/Buttons/ButtonBlock';
 import { Grid, GridItem } from 'Components/Grid';
+import { Link } from 'react-router-dom';
 
 const Buttons = styled.div`
   margin-top:35px;
@@ -18,7 +19,9 @@ class CartButtons extends React.Component {
               fontWeight='600'
               fontSize='14px'
               lineHeight='16.8px'
-
+              as={Link}
+              exact
+              to='/cart'
             >
               VIEW BAG
             </ButtonBlock>

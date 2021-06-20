@@ -16,10 +16,13 @@ class Modal extends React.Component {
 
 
   render() {
-    const { isModalOpen } = this.props;
+    const { isModalOpen, handleClose } = this.props;
     if (isModalOpen) return (
       <AbsoluteBackground >
-        <ModalCart cordinates={this.ref}>
+        <ModalCart
+          isModalOpen={isModalOpen}
+          handleClose={handleClose}
+          cordinates={this.ref}>
           {this.props.children}
         </ModalCart>
       </AbsoluteBackground>

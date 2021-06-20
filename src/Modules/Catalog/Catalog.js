@@ -1,34 +1,28 @@
 import React from 'react';
-import Product from './Product';
 import styled from 'styled-components'
-import { Grid, GridItem } from 'Components/Grid'
+import { Grid } from 'Components/Grid'
+import { AppContext } from 'Store/AppContext';
+import CatalogList from './CatalogList';
 
 const ProductCatalog = styled.div`
     margin-top:100px;
 `
+const H1 = styled.h1`
+    text-transform:capitalize;
+`
+
 
 class Catalog extends React.Component {
 
-
   render() {
+    const { products } = this.context;
     return (
       <div className="Homepage">
-        <h1>Catalog</h1>
+        <H1>{this.props.match.params.id}</H1>
         <ProductCatalog>
 
           <Grid>
-            <GridItem col={4}>
-              <Product />
-
-            </GridItem>
-            <GridItem col={4}>
-              <Product outOfStock={true} />
-
-            </GridItem>
-            <GridItem col={4}>
-              <Product />
-
-            </GridItem>
+            <CatalogList category={this.props.match.params.id} products={products} />
           </Grid>
         </ProductCatalog>
 
@@ -36,4 +30,7 @@ class Catalog extends React.Component {
     )
   }
 }
+
+Catalog.contextType = AppContext;
+
 export default Catalog;

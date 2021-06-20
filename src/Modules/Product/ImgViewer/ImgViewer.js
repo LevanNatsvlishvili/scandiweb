@@ -6,6 +6,7 @@ import ImgViewerMainImg from './ImgViewerMainImg'
 const ImgViewerWrapper = styled.div`
   display:flex;
   width:100%;
+  margin-bottom:100px;
 `
 
 class ImgViewer extends React.Component {
@@ -13,29 +14,40 @@ class ImgViewer extends React.Component {
     super(props);
 
     this.state = {
-      img: imgs[0],
+      img: '',
     }
     this.setState = this.setState.bind(this);
   }
 
+  componentDidMount() {
+    if (this.props.gallery) {
+      this.props.gallery.map((newImg, i) => {
+        console.log(newImg);
+        if (i === 0) {
+          this.setState({ img: newImg })
+        }
+        return false;
+      })
+    }
+  }
+
   render() {
+    const { gallery } = this.props;
+    const { img } = this.state;
     return (
       <ImgViewerWrapper>
         <ImgViewerSidemenu
-          currentVal={this.state.img}
+          currentVal={img}
           onClick={this.setState}
-          imgs={imgs} />
+          imgs={gallery} />
 
-        <ImgViewerMainImg img={this.state.img.img} />
+        <ImgViewerMainImg
+          imgs={gallery}
+          setState={this.setState}
+          img={img} />
       </ImgViewerWrapper>
     )
   }
 }
 
 export default ImgViewer;
-
-const imgs = [
-  { id: 1, img: "/products/ProductDFull.png", },
-  { id: 2, img: "/products/ProductBFull.png", },
-  { id: 3, img: "/products/ProductAFull.png", },
-]

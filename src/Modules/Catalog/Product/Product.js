@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import ProductAddToCart from './ProductAddToCart';
 import ProductPrice from './ProductPrice';
 import ProductTitle from './ProductTitle';
+import { Link } from 'react-router-dom';
 
 
 const ProductWrapper = styled.div`
@@ -24,6 +25,7 @@ const ImgContainer = styled.div`
   position:relative;
   & img {
     width:100%;
+    max-height:355px;
   }
   &:before{
     position:absolute;
@@ -41,26 +43,38 @@ const ImgContainer = styled.div`
   }
 `
 
+
+const ProductImg = styled.img`
+    width:100%;
+    height:355px;
+`
+
 const TextContainer = styled.div`
 margin - top: 24px;
+`
+
+const StyledLink = styled(Link)`
+  text-decoration:none;
 `
 
 class Product extends React.Component {
 
   render() {
-    const { outOfStock } = this.props;
+    const { outOfStock, title, img, id, prices } = this.props;
     return (
-      <ProductWrapper>
-        <ImgContainer outOfStock={outOfStock}>
-          <img src="/products/ProductDFull.png" alt="product" />
-          <ProductAddToCart outOfStock={outOfStock} />
+      <StyledLink to={`/product/${id}`} >
+        <ProductWrapper>
+          <ImgContainer outOfStock={outOfStock}>
+            <ProductImg src={img} alt="product" />
+            <ProductAddToCart outOfStock={outOfStock} />
 
-        </ImgContainer>
-        <TextContainer>
-          <ProductTitle outOfStock={outOfStock} />
-          <ProductPrice outOfStock={outOfStock} />
-        </TextContainer>
-      </ProductWrapper>
+          </ImgContainer>
+          <TextContainer>
+            <ProductTitle text={title} outOfStock={outOfStock} />
+            <ProductPrice prices={prices} currency={prices.currency} text={prices.price} outOfStock={outOfStock} />
+          </TextContainer>
+        </ProductWrapper>
+      </StyledLink>
     )
   }
 }

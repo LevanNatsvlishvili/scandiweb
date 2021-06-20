@@ -10,6 +10,7 @@ const GridCont = styled.div`
     padding:0!important;
     margin:0;
     width: 100%;
+    align-items:${props => props.align};
     margin:calc((${props => props.spacing} * 4px) * -1);
     width: calc(100% + (${props => props.spacing} * 4px));
     & .grid-item {
@@ -20,9 +21,9 @@ const GridCont = styled.div`
 class Grid extends React.Component {
 
   render() {
-    const { spacing } = this.props;
+    const { spacing, align } = this.props;
     return (
-      <GridCont spacing={spacing}>
+      <GridCont align={align} spacing={spacing}>
         {this.props.children}
       </GridCont>
     )

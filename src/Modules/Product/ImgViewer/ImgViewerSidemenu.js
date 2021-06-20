@@ -3,10 +3,7 @@ import styled from 'styled-components'
 import Theme from 'Theme';
 
 const SideMenu = styled.ul`
-  max-width:80px;
-  margin-right:40px;
   list-style-type: none;
-  height:500px;
   & li{
     margin-bottom:40px;
   }
@@ -26,6 +23,13 @@ const ImgButton = styled.button`
     width:100%;
   }
 `
+const Wrapper = styled.div`
+height:600px;
+width:130px;
+overflow:auto;
+margin-right:40px;
+direction: rtl;
+`
 
 class ImgViewerSidemenu extends React.Component {
   handleClick(val) {
@@ -33,21 +37,25 @@ class ImgViewerSidemenu extends React.Component {
   }
   render() {
     const { imgs, currentVal } = this.props;
+    // console.log(imgs.indexOf(currentVal));
+
     return (
+      <Wrapper>
 
-      <SideMenu>
-        {imgs.map((img, index) => (
-          <li key={index}>
-            <ImgButton
-              active={currentVal.id === img.id ? true : false}
-              onClick={() => this.handleClick(img)}>
-              <img src={img.img} alt="sideImg" />
-            </ImgButton>
-          </li>
+        <SideMenu>
+          {imgs ? imgs.map((img, index) => (
+            <li key={index}>
+              <ImgButton
+                active={imgs.indexOf(currentVal) === imgs.indexOf(img) ? true : false}
+                onClick={() => this.handleClick(img)}>
+                <img src={img} alt="sideImg" />
+              </ImgButton>
+            </li>
 
-        ))}
+          )) : null}
 
-      </SideMenu>
+        </SideMenu>
+      </Wrapper>
     )
   }
 }

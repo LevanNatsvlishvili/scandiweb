@@ -2,7 +2,15 @@ import React, { createRef } from 'react';
 import CurrencyOpen from './CurrencyOpen';
 import CurrencySelect from './CurrencySelect';
 import CurrencyOptions from './CurrencyOptions';
+import { api } from 'Api';
+import axios from 'axios';
 
+
+const query = `
+{
+  currencies
+}
+`
 
 class Currency extends React.Component {
   constructor(props) {
@@ -11,26 +19,23 @@ class Currency extends React.Component {
     this.state = {
       isModalOpen: false,
       value: this.props.defaultValue || options[0],
+      currencies: [],
     }
-    document.addEventListener('mousedown', this.handelClickOutside, false)
-    document.removeEventListener('mousedown', this.handelClickOutside, false)
+  }
 
+  fetchData = async () => {
+    const result = await axios.post(api, { query });
+    const resultData = result.data.data.currencies;
+    this.setState({ currencies: [...resultData] });
   }
 
   onClick = () => {
     this.setState({ isModalOpen: !this.state.isModalOpen })
   }
 
-  getValue = (newValue) => {
-    this.setState({ value: newValue })
-  }
-
-  Search = (array, desiredValue) => {
-    return array.find(({ value }) => value === desiredValue)
-  }
-
   componentDidMount() {
     document.addEventListener('mousedown', this.handelClickOutside, false)
+    this.fetchData();
   }
 
   componentWillUnmount() {
@@ -49,19 +54,21 @@ class Currency extends React.Component {
   }
 
   render() {
-
+    const { getValue } = this.props;
+    console.log();
     return (
       <div ref={node => this.node = node}>
         <CurrencyOpen
           onClick={this.onClick}
           symbol={this.state.value.symbol}
+          currencies={this.state.currencies}
         />
 
         <CurrencySelect isModalOpen={this.state.isModalOpen}>
           <CurrencyOptions
             close={this.onClick}
-            getValue={this.getValue}
-            options={options}
+            getValue={getValue}
+            options={this.state.currencies}
             isModalOpen={this.state.isModalOpen} />
         </CurrencySelect>
 

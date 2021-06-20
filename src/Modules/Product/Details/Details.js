@@ -1,10 +1,10 @@
 import React from 'react';
-import styled from 'styled-components'
-import DetailsTitle from './DetailsTitle'
-import DetailsPrice from './DetailsPrice'
-import DetailsAddToCart from './DetailsAddToCart'
-import DetailsDescription from './DetailsDescription'
-import DetailsSizes from './Sizes/'
+import styled from 'styled-components';
+import DetailsTitle from './DetailsTitle';
+import DetailsPrice from './DetailsPrice';
+import DetailsAddToCart from './DetailsAddToCart';
+import DetailsDescription from './DetailsDescription';
+import DetailsSizes from './Sizes/';
 
 const DetailsWrapper = styled.div`
   padding-left:100px;
@@ -25,28 +25,30 @@ class Details extends React.Component {
   }
 
   render() {
+    const { prices, name, category, desc, attributes, addToCart } = this.props;
     return (
       <DetailsWrapper>
-        <DetailsTitle title='Apollo' type='Running Shorts' />
+        <DetailsTitle title={name} type={category} />
 
         <DetailsSizes
           currentSize={this.state.currentSize}
           handleSize={this.handleSize}
-          sizes={sizes} />
+          sizes={attributes} />
 
-        <DetailsPrice price='$50.00' />
+        <DetailsPrice
+          prices={prices}
+        // currency={prices[0].currency}
+        // price={prices[0].amount} 
+        />
 
-        <DetailsAddToCart />
+        <DetailsAddToCart addToCart={addToCart} />
 
-        <DetailsDescription />
+        <DetailsDescription
+          desc={desc}
+        />
       </DetailsWrapper>
     )
   }
 }
 
 export default Details;
-
-const sizes = [
-  { name: 'XS', disabled: false, value: 'xs' },
-  { name: 'S', disabled: false, value: 's' },
-]

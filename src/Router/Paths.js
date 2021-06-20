@@ -1,6 +1,6 @@
 const Url = {
-  CATALOG: '/',
-  PRODUCT: '/product',
+  CATALOG: '/:id',
+  PRODUCT: '/product/:id',
   CART: '/cart',
 };
 

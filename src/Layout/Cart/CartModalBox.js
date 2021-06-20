@@ -17,10 +17,40 @@ const Cart = styled.div`
 
 
 class ModalCart extends React.Component {
+  onClick = () => {
+    this.setState({ isModalOpen: !this.state.isModalOpen })
+  }
+
+  getValue = (newValue) => {
+    this.setState({ value: newValue })
+  }
+
+  Search = (array, desiredValue) => {
+    return array.find(({ value }) => value === desiredValue)
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handelClickOutside, false)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handelClickOutside, false)
+  }
+
+  handelClickOutside = (e) => {
+    if (this.node.contains(e.target)) {
+      return;
+    }
+
+    if (this.props.isModalOpen) {
+      this.props.handleClose();
+    }
+
+  }
 
   render() {
     return (
-      <Cart>
+      <Cart ref={node => this.node = node}>
         {this.props.children}
       </Cart>
     )

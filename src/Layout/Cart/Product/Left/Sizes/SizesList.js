@@ -18,7 +18,7 @@ class SizesList extends React.Component {
             active={size === currentSize ? true : false}
             onClick={() => handleSize(size)}
             disabled={size.disabled}>
-            {size.displayValue}
+            {size.value}
           </SizesListButton>
         </ButtonWrapper>
       ))

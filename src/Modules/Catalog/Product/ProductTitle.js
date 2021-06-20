@@ -4,7 +4,7 @@ import React from 'react';
 class ProductTitle extends React.Component {
 
   render() {
-    const { outOfStock } = this.props;
+    const { outOfStock, text } = this.props;
 
     return (
       <Text
@@ -13,7 +13,7 @@ class ProductTitle extends React.Component {
         fontSize='18px'
         lineHeight='28.8px'
       >
-        Apollo Running Short
+        {text}
       </Text>
     )
   }

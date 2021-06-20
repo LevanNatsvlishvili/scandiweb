@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductTitle from './ProductLeftTitle'
 import ProductPrice from './ProductLeftPrice'
-import ProductSizes from './ProductLeftSizes'
+import ProductSizes from './Sizes/'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -13,14 +13,18 @@ const Wrapper = styled.div`
 class ProductLeft extends React.Component {
 
   render() {
-    const { title, price, sizes } = this.props;
+    const { title, prices, sizes, currentSize, handleSize } = this.props;
+    console.log(sizes[0]);
     return (
       <Wrapper>
         <div>
           <ProductTitle text={title} />
-          <ProductPrice text={price} />
+          <ProductPrice prices={prices} />
         </div>
-        <ProductSizes sizes={sizes} />
+        <ProductSizes
+          handleSize={handleSize}
+          currentSize={currentSize}
+          sizes={sizes} />
       </Wrapper>
     )
   }

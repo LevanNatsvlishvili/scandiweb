@@ -10,22 +10,35 @@ const ProductWrapper = styled.div`
 
 
 class Product extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentSize: {},
+    }
+  }
+
+  handleSize = (val) => {
+    this.setState({ currentSize: val });
+  }
 
   render() {
     const { product, } = this.props
+    console.log(product);
     return (
       <ProductWrapper>
         <Grid >
           <GridItem col={6}>
             <Left
-              title={product.title}
-              price={product.price}
-              sizes={product.sizes}
+              title={product.name}
+              prices={product.prices}
+              sizes={product.attributes}
+              currentSize={this.state.currentSize}
+              handleSize={this.handleSize}
             />
           </GridItem>
           <GridItem col={6}>
             <Right
-              img={product.img}
+              img={product.gallery}
             />
           </GridItem>
 

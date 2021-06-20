@@ -6,6 +6,7 @@ import CartButton from './CartButton';
 import CartTotal from './CartTotal';
 import Product from './Product';
 import CartCheckout from './CartCheckout';
+import { AppContext } from 'Store/AppContext';
 
 const ProductContainer = styled.div`
   height:370px;
@@ -25,34 +26,55 @@ class Cart extends React.Component {
       isModalOpen: false,
     }
   }
+
+  handleModal = () => {
+    this.setState({ isModalOpen: !this.state.isModalOpen });
+  }
+
+
+  handleClose = () => {
+    this.setState({ isModalOpen: false });
+  }
+
+  // calculateTotal = () => {
+  //   let i;
+  //   cart.map((item)=> {
+  //     i = i + item;
+  //   })
+  // }
+
   render() {
+    const { cart } = this.context;
     return (
-      <>
+      <div>
         <CartButton
-          onClick={() => this.setState({ isModalOpen: !this.state.isModalOpen })}
+          number={cart.length}
+          onClick={this.handleModal}
         />
         <Modal
+          handleClose={this.handleClose}
           isModalOpen={this.state.isModalOpen}
         >
-          <CartMyBag />
+          <CartMyBag items={cart.length} />
 
           <ProductContainer>
 
-            {products.map((product, i) => (
+            {cart.map((product, i) => (
               <Product
                 key={i}
                 product={product}
               />
             ))}
           </ProductContainer>
-          <CartTotal />
+          <CartTotal cart={cart} />
           <CartCheckout />
         </Modal>
 
-      </>
+      </div>
     )
   }
 }
+Cart.contextType = AppContext;
 
 export default Cart;
 

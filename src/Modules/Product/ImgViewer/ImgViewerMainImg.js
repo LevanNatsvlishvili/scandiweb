@@ -6,16 +6,28 @@ const MainImg = styled.div`
   & img{
     width:100%;
     max-width:600px;
+    max-height:600px;
   }
 `
 
 class ImgViewerMainImg extends React.Component {
 
+  componentDidMount() {
+
+    if (!this.props.img) {
+      if (this.props.imgs) {
+        this.props.setState({ img: this.props.imgs[0] })
+      }
+    }
+  }
+
+
+
   render() {
     const { img } = this.props;
     return (
       <MainImg>
-        <img src={img} alt="fullImg" />
+        {img ? <img src={img} alt="fullImg" /> : null}
       </MainImg>
     )
   }

@@ -9,7 +9,7 @@ const Button = styled.button`
   cursor:pointer;
   position:relative;
   &:after{
-    content:'1';
+    content:'${props => props.number}';
     top: -10px;
     left: 12px;
     width: 20px;
@@ -28,8 +28,9 @@ const Button = styled.button`
 class CartButton extends React.Component {
 
   render() {
+    const { number } = this.props;
     return (
-      <Button onClick={this.props.onClick} {...this.props.rest}>
+      <Button number={number} onClick={this.props.onClick} {...this.props.rest}>
         <img src="/icons/cart/cartBlack.svg" alt="cart" />
       </Button>
     )

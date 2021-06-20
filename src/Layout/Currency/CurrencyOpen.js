@@ -1,4 +1,5 @@
 import React from "react";
+import { AppContext } from "Store/AppContext";
 import styled from "styled-components";
 
 const Button = styled.button`
@@ -14,20 +15,37 @@ const Button = styled.button`
   position:relative;
 `;
 
+const currencySymbols = {
+  USD: '$',
+  GBP: '£',
+  JPY: '¥',
+  AUD: '$',
+  RUB: '₽',
+}
+
 
 class CurrencyOpen extends React.Component {
 
 
   render() {
-    const { symbol } = this.props;
-    return (
-      <Button onClick={this.props.onClick} {...this.props.rest}>
-        {symbol}
-      </Button>
+    const { currencies } = this.props;
+    const { activeCurrency } = this.context;
+    if (Array.isArray(currencies)) return (
+      currencies
+        .filter(currency => currency === activeCurrency)
+        .map((currency, i) => {
+          return (
+            <Button key={i} onClick={this.props.onClick} {...this.props.rest}>
+              {currencySymbols[currency]}
+            </Button >
+          )
+        })
     )
+
+    return null;
   }
 }
 
-
+CurrencyOpen.contextType = AppContext;
 
 export default CurrencyOpen;
