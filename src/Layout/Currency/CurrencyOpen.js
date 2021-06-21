@@ -1,6 +1,7 @@
 import React from "react";
 import { AppContext } from "Store/AppContext";
 import styled from "styled-components";
+import { currencies } from 'Utils/Objects';
 
 const Button = styled.button`
   width: fit-content;
@@ -15,28 +16,19 @@ const Button = styled.button`
   position:relative;
 `;
 
-const currencySymbols = {
-  USD: '$',
-  GBP: '£',
-  JPY: '¥',
-  AUD: '$',
-  RUB: '₽',
-}
-
-
 class CurrencyOpen extends React.Component {
 
 
   render() {
-    const { currencies } = this.props;
+    const { currency } = this.props;
     const { activeCurrency } = this.context;
-    if (Array.isArray(currencies)) return (
-      currencies
+    if (Array.isArray(currency)) return (
+      currency
         .filter(currency => currency === activeCurrency)
         .map((currency, i) => {
           return (
             <Button key={i} onClick={this.props.onClick} {...this.props.rest}>
-              {currencySymbols[currency]}
+              {currencies[currency]}
             </Button >
           )
         })

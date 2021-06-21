@@ -9,6 +9,12 @@ const QuantityWrapper = styled.div`
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
+  ${[props => props.theme.breakpoints.sm]} {
+    width:100%;
+    align-items:center;
+    flex-direction:row-reverse;
+  }
+
 `
 
 class RightQuantity extends React.Component {

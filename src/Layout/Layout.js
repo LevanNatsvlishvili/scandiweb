@@ -13,10 +13,15 @@ const LayoutContainer = styled.nav`
   display:flex;
   position:fixed;
   z-index: 1200;
-    position: fixed;
-    top: 0;
-    width: 100%;
-
+  position: fixed;
+  top: 0;
+  width: 100%;
+  ${[props => props.theme.breakpoints.md]} {
+    padding:0 40px;
+  }
+  ${[props => props.theme.breakpoints.xs]} {
+    padding:0 20px;
+  }
 `
 
 const Main = styled.div`
@@ -24,6 +29,13 @@ const Main = styled.div`
   min-height:80px;
   padding:0 100px ;
   margin-top:160px;
+  margin-bottom:40px;
+  ${[props => props.theme.breakpoints.md]} {
+    padding:0 40px;
+  }
+  ${[props => props.theme.breakpoints.xs]} {
+    padding:0 20px;
+  }
 `
 
 const ButtonsWrapper = styled.div`
@@ -44,13 +56,13 @@ class Layout extends React.Component {
       <>
         <LayoutContainer >
           <Grid align='center'>
-            <GridItem col={3}>
+            <GridItem md={6} col={3}>
               <NavMenu />
             </GridItem>
-            <GridItem col={6}>
+            <GridItem md={0} col={6}>
               <LayoutBrand />
             </GridItem>
-            <GridItem col={3}>
+            <GridItem md={6} col={3}>
               <ButtonsWrapper>
                 <Spacing>
                   <LayoutCurrency />

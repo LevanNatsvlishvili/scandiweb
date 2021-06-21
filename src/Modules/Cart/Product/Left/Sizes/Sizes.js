@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-import DetailsSizesButtons from './SizesList'
+import SizesList from './SizesList'
 
 
 const SizesWrapper = styled.div`
@@ -11,7 +11,7 @@ const SizesWrapper = styled.div`
 
 `
 const Wrapper = styled.div`
-  margin-top:12px;
+  margin-top:auto;
 `
 
 
@@ -19,16 +19,18 @@ class Sizes extends React.Component {
 
   render() {
     const { sizes, handleSize, currentSize } = this.props;
-    return (
+    if (Array.isArray(sizes) && sizes[0]) return (
       <Wrapper>
         <SizesWrapper>
-          <DetailsSizesButtons
+          <SizesList
             currentSize={currentSize}
             handleSize={handleSize}
             sizes={sizes} />
         </SizesWrapper>
       </Wrapper>
     )
+
+    return null;
   }
 }
 

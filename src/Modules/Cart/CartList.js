@@ -1,4 +1,5 @@
 import React from 'react';
+import { AppContext } from 'Store/AppContext';
 import styled from 'styled-components'
 import Product from './Product'
 
@@ -10,21 +11,28 @@ class CartList extends React.Component {
 
 
   render() {
+    const { cart } = this.context
     return (
       <List>
-        <Product
-          title='Appolo'
-          type='Running Shorts'
-          img='/products/ProductAFull.png'
-          images={images}
-        />
+        {cart.map((product, i) => {
+          return (
+            <Product
+              key={i}
+              title={product.name}
+              type={product.category}
+              prices={product.prices}
+              img='/products/ProductAFull.png'
+              images={product.gallery}
+              attributes={product.attributes}
+            />
+
+          )
+        })}
       </List>
     )
   }
 }
-export default CartList;
 
-const images = [
-  '/products/ProductAFull.png',
-  '/products/ProductBFull.png',
-]
+CartList.contextType = AppContext;
+
+export default CartList;

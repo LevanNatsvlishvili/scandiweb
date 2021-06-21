@@ -61,7 +61,7 @@ class Currency extends React.Component {
         <CurrencyOpen
           onClick={this.onClick}
           symbol={this.state.value.symbol}
-          currencies={this.state.currencies}
+          currency={this.state.currencies}
         />
 
         <CurrencySelect isModalOpen={this.state.isModalOpen}>

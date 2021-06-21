@@ -11,12 +11,17 @@ const Wrapper = styled.div`
 class ProductLeft extends React.Component {
 
   render() {
-    return (
+    const { imgs } = this.props;
+    if (Array.isArray(imgs)) return (
       <Wrapper>
         <ProductRightQuantity />
-        <ProductRightImage img={this.props.img} />
+
+
+        <ProductRightImage img={imgs[0]} />
       </Wrapper>
     )
+
+    return null;
   }
 }
 export default ProductLeft;

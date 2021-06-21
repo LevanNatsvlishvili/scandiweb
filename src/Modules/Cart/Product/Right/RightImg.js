@@ -9,6 +9,10 @@ const ImgWrapper = styled.div`
     height:100%;
     width:100%;
   }
+  ${[props => props.theme.breakpoints.sm]} {
+    width:100%;
+
+  }
 `
 const Arrow = styled.button`
   position:absolute;

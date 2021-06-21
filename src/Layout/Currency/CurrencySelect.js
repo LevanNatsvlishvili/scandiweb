@@ -6,7 +6,7 @@ const SelectField = styled.div`
   background:#fff;
   width:114px;
   margin-top:10px;
-  margin-left:-25px;
+  margin-left:-50px;
   min-height:100px;
   filter: drop-shadow(0px 4px 35px rgba(168, 172, 176, 0.19));
   z-index:999;

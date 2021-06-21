@@ -2,6 +2,7 @@ import Text from 'Components/Text';
 import React from 'react';
 import { AppContext } from 'Store/AppContext';
 import styled from 'styled-components'
+import { currencies } from 'Utils/Objects';
 
 const TotalContainer = styled.div`
   display:flex;
@@ -10,12 +11,37 @@ const TotalContainer = styled.div`
 `
 
 class CartTotal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      total: 0,
+    }
+  }
+
+  calculateTotal = () => {
+    let total = 0;
+    this.props.cart
+      .map((item) => {
+        return item.prices
+          .filter(price => price.currency === this.context.activeCurrency)
+          .map((price) => {
+            return total = total + price.amount;
+          })
+
+      })
+    this.setState({ total: total, });
+    return;
+  };
+
+  componentDidMount() {
+    this.calculateTotal();
+  }
 
   render() {
     const { cart } = this.props;
     const { activeCurrency } = this.context;
-    console.log(cart);
-    let totalNum = 0;
+
+
     if (Array.isArray(cart)) return (
       <TotalContainer>
         <Text
@@ -34,17 +60,7 @@ class CartTotal extends React.Component {
           align='right'
           color='text'
         >
-          $100.00
-          {cart
-            .filter(item => console.log(item))
-            .map((item) => {
-              console.log(totalNum);
-              totalNum = totalNum + item.prices.amount;
-              return (
-                item.prices.amount
-              )
-              // console.log(total);
-            })}
+          {currencies[activeCurrency] + this.state.total}
         </Text>
       </TotalContainer>
     )

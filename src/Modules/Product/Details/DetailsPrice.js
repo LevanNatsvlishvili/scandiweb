@@ -2,18 +2,11 @@ import React from 'react';
 import styled from 'styled-components'
 import Text from 'Components/Text'
 import { AppContext } from 'Store/AppContext';
+import { currencies } from 'Utils/Objects';
 
 const PriceWrapper = styled.div`
   margin-top:40px;
 `
-
-const currencies = {
-  USD: '$',
-  GBP: '£',
-  JPY: '¥',
-  AUD: '$',
-  RUB: '₽',
-}
 
 class DetailsPrice extends React.Component {
 

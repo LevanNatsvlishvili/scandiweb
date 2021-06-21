@@ -1,14 +1,8 @@
 import Text from 'Components/Text';
 import React from 'react';
 import { AppContext } from 'Store/AppContext';
+import { currencies } from 'Utils/Objects';
 
-const currencies = {
-  USD: '$',
-  GBP: '£',
-  JPY: '¥',
-  AUD: '$',
-  RUB: '₽',
-}
 
 class ProductPrice extends React.Component {
 

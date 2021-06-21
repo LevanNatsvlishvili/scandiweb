@@ -3,12 +3,13 @@ import styled from 'styled-components'
 import ButtonBlock from 'Components/Buttons/ButtonBlock';
 import { Grid, GridItem } from 'Components/Grid';
 import { Link } from 'react-router-dom';
+import Url from 'Router/Paths';
 
 const Buttons = styled.div`
   margin-top:35px;
 `
 
-class CartButtons extends React.Component {
+class CartCheckout extends React.Component {
 
   render() {
     return (
@@ -20,8 +21,8 @@ class CartButtons extends React.Component {
               fontSize='14px'
               lineHeight='16.8px'
               as={Link}
-              exact
-              to='/cart'
+              // exact={true}
+              to={Url.CART}
             >
               VIEW BAG
             </ButtonBlock>
@@ -46,4 +47,4 @@ class CartButtons extends React.Component {
   }
 }
 
-export default CartButtons;
+export default CartCheckout;

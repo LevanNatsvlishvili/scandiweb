@@ -11,6 +11,9 @@ import { AppContext } from 'Store/AppContext';
 const ProductContainer = styled.div`
   height:370px;
   overflow:auto;
+  ${[props => props.theme.breakpoints.sm]} {
+    height:200px;
+  }
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -35,13 +38,6 @@ class Cart extends React.Component {
   handleClose = () => {
     this.setState({ isModalOpen: false });
   }
-
-  // calculateTotal = () => {
-  //   let i;
-  //   cart.map((item)=> {
-  //     i = i + item;
-  //   })
-  // }
 
   render() {
     const { cart } = this.context;
@@ -77,33 +73,3 @@ class Cart extends React.Component {
 Cart.contextType = AppContext;
 
 export default Cart;
-
-const products = [
-  {
-    title: 'Apollo Running Short',
-    price: '$50.00',
-    img: '/products/productD.png',
-    sizes: [
-      { name: 'S', disabled: false },
-      { name: 'M', disabled: true },
-    ]
-  },
-  {
-    title: 'Apollo Running Short',
-    price: '$50.00',
-    img: '/products/productD.png',
-    sizes: [
-      { name: 'S', disabled: false },
-      { name: 'M', disabled: true },
-    ]
-  },
-  {
-    title: 'Apollo Running Short',
-    price: '$50.00',
-    img: '/products/productD.png',
-    sizes: [
-      { name: 'S', disabled: false },
-      { name: 'M', disabled: true },
-    ]
-  },
-]

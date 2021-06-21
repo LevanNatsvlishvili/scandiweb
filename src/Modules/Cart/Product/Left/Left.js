@@ -2,22 +2,28 @@ import React from 'react';
 import LeftTitle from './LeftTitle'
 import LeftPrice from './LeftPrice'
 import Sizes from './Sizes'
+import styled from 'styled-components'
+
+const LeftWrapper = styled.div`
+  display:flex;
+  flex-direction:column;
+`
 
 class Left extends React.Component {
 
 
   render() {
-    const { title, type, sizes, handleSize, currentSize } = this.props;
+    const { title, type, handleSize, currentSize, prices, attributes } = this.props;
     return (
-      <div>
+      <LeftWrapper>
         <LeftTitle title={title} type={type} />
-        <LeftPrice price='$50.00' />
+        <LeftPrice prices={prices} />
         <Sizes
-          currentSize={handleSize}
-          handleSize={currentSize}
-          sizes={sizes}
+          currentSize={currentSize}
+          handleSize={handleSize}
+          sizes={attributes}
         />
-      </div>
+      </LeftWrapper>
     )
   }
 }

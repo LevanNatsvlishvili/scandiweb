@@ -7,6 +7,11 @@ const ImgViewerWrapper = styled.div`
   display:flex;
   width:100%;
   margin-bottom:100px;
+  ${props => props.theme.breakpoints.md} {
+    flex-direction:column;
+  margin-bottom:10px;
+
+  }
 `
 
 class ImgViewer extends React.Component {

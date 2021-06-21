@@ -16,9 +16,9 @@ class CatalogList extends React.Component {
         .filter(product => product.category === category)
         .map((product, index) => {
           return (
-            <GridItem key={index} col={4}>
+            <GridItem key={index} col={4} md={6} sm={12}>
               <Product
-                id={index}
+                id={products.indexOf(product)}
                 img={product.gallery[0]}
                 title={product.name}
                 prices={product.prices}

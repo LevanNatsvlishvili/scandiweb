@@ -7,7 +7,11 @@ const Theme = ({
     white: '#fff',
     transparent: 'transparent',
   },
-
+  breakpoints: {
+    md: '@media only screen and (max-width:1000px)',
+    sm: '@media only screen and (max-width:700px)',
+    xs: '@media only screen and (max-width:500px)',
+  }
 })
 
 export default Theme;

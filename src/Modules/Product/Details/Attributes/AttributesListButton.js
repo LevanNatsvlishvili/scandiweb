@@ -4,7 +4,7 @@ import React from 'react';
 class SizesListButton extends React.Component {
 
   render() {
-    const { children, active, sizes, ...rest } = this.props;
+    const { children, active, sizes, activeBorder, ...rest } = this.props;
     return (
 
       <ButtonBlock
@@ -12,6 +12,7 @@ class SizesListButton extends React.Component {
         height='45px'
         background={active ? 'text' : null}
         color={active ? 'white' : null}
+        border={activeBorder ? '1px solid' : null}
         {...rest}
       >
         {children}

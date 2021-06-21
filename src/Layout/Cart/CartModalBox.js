@@ -12,6 +12,9 @@ const Cart = styled.div`
   min-height:540px;
   padding:16px;
   z-index:1000;
+  ${[props => props.theme.breakpoints.sm]} {
+    right:0;
+  }
 `;
 
 
@@ -23,10 +26,6 @@ class ModalCart extends React.Component {
 
   getValue = (newValue) => {
     this.setState({ value: newValue })
-  }
-
-  Search = (array, desiredValue) => {
-    return array.find(({ value }) => value === desiredValue)
   }
 
   componentDidMount() {

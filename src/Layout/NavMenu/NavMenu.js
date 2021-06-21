@@ -29,7 +29,7 @@ class NavMenu extends React.Component {
             if (used.indexOf(product.category) === -1) {
               used.push(product.category)
               return (
-                <StyledLink key={i} exact to={`/${product.category}`}>{product.category}</StyledLink>
+                <StyledLink key={i} exact={true} to={`/${product.category}`}>{product.category}</StyledLink>
               )
             }
 

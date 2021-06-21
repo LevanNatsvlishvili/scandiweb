@@ -4,12 +4,17 @@ import DetailsTitle from './DetailsTitle';
 import DetailsPrice from './DetailsPrice';
 import DetailsAddToCart from './DetailsAddToCart';
 import DetailsDescription from './DetailsDescription';
-import DetailsSizes from './Sizes/';
+import DetailsAttributes from './Attributes';
 
 const DetailsWrapper = styled.div`
   padding-left:100px;
   width:100%;
   max-width:400px;
+  ${props => props.theme.breakpoints.md}{
+    padding-left:0px;
+    max-width:100%;
+  
+  }
 `
 
 class Details extends React.Component {
@@ -18,6 +23,8 @@ class Details extends React.Component {
     this.state = {
       currentSize: {},
     }
+    this.setState = this.setState.bind(this);
+
   }
 
   handleSize = (val) => {
@@ -25,15 +32,15 @@ class Details extends React.Component {
   }
 
   render() {
-    const { prices, name, category, desc, attributes, addToCart } = this.props;
+    const { prices, name, category, desc, attributes, addToCart, } = this.props;
     return (
       <DetailsWrapper>
         <DetailsTitle title={name} type={category} />
 
-        <DetailsSizes
+        <DetailsAttributes
           currentSize={this.state.currentSize}
           handleSize={this.handleSize}
-          sizes={attributes} />
+          attributes={attributes} />
 
         <DetailsPrice
           prices={prices}

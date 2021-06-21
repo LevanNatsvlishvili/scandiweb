@@ -60,12 +60,12 @@ class Product extends React.Component {
     return (
       <div>
         <Grid>
-          <GridItem col={7}>
+          <GridItem col={7} md={12}>
             <ImgViewer
               gallery={gallery}
             />
           </GridItem>
-          <GridItem col={5}>
+          <GridItem col={5} md={12}>
             <Details
               attributes={attributes}
               category={category}

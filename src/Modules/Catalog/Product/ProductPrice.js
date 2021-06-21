@@ -1,14 +1,7 @@
 import Text from 'Components/Text';
 import React from 'react';
 import { AppContext } from 'Store/AppContext';
-
-const currencies = {
-  USD: '$',
-  GBP: '£',
-  JPY: '¥',
-  AUD: '$',
-  RUB: '₽',
-}
+import { currencies } from 'Utils/Objects';
 
 class ProductPrice extends React.Component {
 
@@ -19,9 +12,10 @@ class ProductPrice extends React.Component {
     if (Array.isArray(prices)) return (
       prices
         .filter(price => price.currency === activeCurrency)
-        .map((price) => {
+        .map((price, i) => {
           return (
             <Text
+              key={i}
               color={outOfStock ? 'out' : 'text'}
               fontWeight='600'
               fontSize='18px'

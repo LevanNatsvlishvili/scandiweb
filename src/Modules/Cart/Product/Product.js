@@ -9,6 +9,10 @@ const CartProduct = styled.div`
   height:225px;
   padding:20px 0;
   display:flex;
+  ${[props => props.theme.breakpoints.sm]} {
+    flex-direction:column;
+    height:auto;
+  }
 `
 
 
@@ -18,6 +22,7 @@ class Product extends React.Component {
     this.state = {
       currentSize: {},
     }
+    this.setState = this.setState.bind(this);
   }
 
   handleSize = (val) => {
@@ -25,7 +30,7 @@ class Product extends React.Component {
   }
 
   render() {
-    const { title, type, img, images } = this.props;
+    const { title, type, img, images, prices, attributes } = this.props;
     return (
       <CartProduct>
         <Left
@@ -34,6 +39,8 @@ class Product extends React.Component {
           sizes={sizes}
           title={title}
           type={type}
+          prices={prices}
+          attributes={attributes}
         />
 
         <Right

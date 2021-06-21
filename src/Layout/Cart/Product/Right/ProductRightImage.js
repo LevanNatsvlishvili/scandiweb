@@ -3,10 +3,12 @@ import styled from 'styled-components'
 
 const ImgWrapper = styled.div`
   padding-left:10px;
-
+  width:105px;
+  height:140px;
   & img{
     height:100%;
     width:100%;
+    object-fit:fill;
   }
 `
 

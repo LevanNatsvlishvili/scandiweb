@@ -23,7 +23,6 @@ class Product extends React.Component {
 
   render() {
     const { product, } = this.props
-    console.log(product);
     return (
       <ProductWrapper>
         <Grid >
@@ -31,14 +30,14 @@ class Product extends React.Component {
             <Left
               title={product.name}
               prices={product.prices}
-              sizes={product.attributes}
+              attributes={product.attributes}
               currentSize={this.state.currentSize}
               handleSize={this.handleSize}
             />
           </GridItem>
           <GridItem col={6}>
             <Right
-              img={product.gallery}
+              imgs={product.gallery}
             />
           </GridItem>
 

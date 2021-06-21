@@ -3,8 +3,9 @@ import styled from "styled-components";
 import ModalCart from "./CartModalBox";
 
 const AbsoluteBackground = styled.div`
-  position: absolute;
+  position: fixed;
   top: 80px;
+  margin-top:1px;
   left:0;
   width:100%;
   height:calc(100% - 80px);
@@ -28,7 +29,7 @@ class Modal extends React.Component {
       </AbsoluteBackground>
     )
 
-    return false;
+    return null;
   }
 }
 
